@@ -1,65 +1,59 @@
-window.onload = function load() {
+window.onload=function load() {
 var drawingCanvas = document.getElementById('smile');
     if(drawingCanvas && drawingCanvas.getContext) 
     {
     var context = drawingCanvas.getContext('2d');
-        
+    var img = document.getElementById("photo");
+    var img2 = document.getElementById("hit");
+    var img3 = document.getElementById("dot");
+    context.drawImage(img,6,7);
+    kol=0;
+    kol2=0;
+    StartStop();
+    matrixArray();
+    //again.onclick= function play()
+    //{
+    //    window.location.reload();
+    //}
     function DrawArc(x2,y2)
     {
-        context.fillStyle = "gray";
-        context.beginPath();
-        context.arc(x2+26, y2+26, 10, 0, Math.PI*2, true); 
-        context.fill ();
-    }
-    for (var x = 0.5; x < 501; x += 50) {   
-        context.strokeStyle = "#000";
-        context.fillStyle = "#fc0";
-        context.moveTo(x, 0);
-        context.lineTo(x, 500);
-        context.stroke();
-        context.fill();
-        }
-
-
-    for (var y = 0.5; y < 501; y += 50) {
-        context.strokeStyle = "#000";
-        context.fillStyle = "#fc0";
-        context.moveTo(0, y);
-        context.lineTo(500, y);
-        context.stroke();
-        context.fill();
-        } 
-        var x2=1,y2=1;
+        if(x2>10 && x2<360 && y2>10 && y2<360)
+        context.drawImage(img3,x2+3,y2+2);
+    } 
         smile.onmousemove= function getCoord()
         {
             x2=event.clientX;
             y2=event.clientY;
             x2=x2-8;
             y2=y2-8; 
-            if(x2%50 !=0)
+            if(x2%33 !=0)
             {
-                x2=Math.ceil(x2/50);
-                x2=(x2*50)-50; 
+                x2=Math.ceil(x2/33);
+                x2=(x2*33)-33; 
             }
-            if(y2%50 !=0)
+            if(y2%33 !=0)
             {
-                y2=Math.ceil(y2/50);
-                y2=(y2*50)-50;  
+                y2=Math.ceil(y2/33);
+                y2=(y2*33)-33;  
             }
             
         }
-          matrixArray();
         smile.onclick= function Draw()
         {
+            kolship1=0;
+            kolship2=0;
+            kolship3=0;
+            kolship4=0;
             kol2++;
             if(kol == 20)
             {
                 alert("Победил за "+kol2+" ходов");kol++;
+                
             }
         else(x2 < 500 || y2 < 500)
             {
-                var x3=(x2+50)/50;
-                var y3=(y2+50)/50;
+                var x3=(x2+33)/33;
+                var y3=(y2+33)/33;
                 if(arr[x3][y3]==1)
                 {
                     arr[x3][y3]=2;
@@ -70,8 +64,7 @@ var drawingCanvas = document.getElementById('smile');
                     }
                     else
                     {
-                        context.fillStyle = "rgb(120,230,0)"; 
-                        context.fillRect (x2+1, y2+1, 49,49);
+                        context.drawImage(img2,x2+3,y2+2);
                     }
                 }
                 if(arr[x3][y3] == 0) 
@@ -83,25 +76,27 @@ var drawingCanvas = document.getElementById('smile');
             {
                 for(var j=1;j<11;j++)
                 {
+                    
                     if(arr[i][j]==2 && arr[i+1][j] == 0 && arr[i-1][j] == 0 && arr[i][j+1] == 0 && arr[i][j-1] == 0)
                     {
                         var q=i-1;
                         var w=j-1;
+                        kolship1++;
                         for(var f=0;f<3;f++)
                         {
                             for(var g=0;g<3;g++)
                             {
                                 if(q == i && w == j)
                                 {
-                                    var i2=(i*50)-50;
-                                    var j2=(j*50)-50;
+                                    var i2=(i*33)-33;
+                                    var j2=(j*33)-33;
                                     context.fillStyle = "rgb(255,0,0)"; 
-                                    context.fillRect (i2+1,j2+1, 49,49);
+                                    context.fillRect (i2+2,j2+2, 31,31);
                                 }
                                 else
                                 {
-                                    var i2=(q*50)-50;
-                                    var j2=(w*50)-50;
+                                    var i2=(q*33)-33;
+                                    var j2=(w*33)-33;
                                     DrawArc(i2,j2);
                                 }
                                 w++;
@@ -119,23 +114,24 @@ var drawingCanvas = document.getElementById('smile');
                         {   
                             var q=i-1;
                             var w=j-1
+                            kolship2++;
                             for(var f=0;f<4;f++)
                             {
                                 for(var g=0;g<3;g++)
                                 {
                                     if((q == i && w == j)||(q == i+1 && w == j ))
                                     {
-                                        var i2=(i*50)-50;
-                                        var j2=(j*50)-50;
+                                        var i2=(i*33)-33;
+                                        var j2=(j*33)-33;
                                         context.fillStyle = "rgb(255,0,0)"; 
-                                        context.fillRect (i2+1,j2+1, 49,49);
-                                        i2=((i+1)*50)-50;
-                                        context.fillRect (i2+1,j2+1, 49,49);
+                                        context.fillRect (i2+2,j2+2, 31,31);
+                                        i2=((i+1)*33)-33;
+                                        context.fillRect (i2+2,j2+2, 31,31);
                                     }
                                     else
                                     {
-                                        var i2=(q*50)-50;
-                                        var j2=(w*50)-50;
+                                        var i2=(q*33)-33;
+                                        var j2=(w*33)-33;
                                         DrawArc(i2,j2); 
                                     }
                                     w++;
@@ -154,23 +150,24 @@ var drawingCanvas = document.getElementById('smile');
                         {
                             var q=i-1;
                             var w=j-1
+                            kolship2++;
                             for(var f=0;f<3;f++)
                             {
                                 for(var g=0;g<4;g++)
                                 {
                                     if((q == i && w == j)||( q == i && w == j+1))
                                     {
-                                        var i2=(i*50)-50;
-                                        var j2=(j*50)-50;
+                                        var i2=(i*33)-33;
+                                        var j2=(j*33)-33;
                                         context.fillStyle = "rgb(255,0,0)"; 
-                                        context.fillRect (i2+1,j2+1, 49,49);
-                                        j2=((j+1)*50)-50;
-                                        context.fillRect (i2+1,j2+1, 49,49);
+                                        context.fillRect (i2+2,j2+2, 31,31);
+                                        j2=((j+1)*33)-33;
+                                        context.fillRect (i2+2,j2+2, 31,31);
                                     }
                                     else
                                     {
-                                        var i2=(q*50)-50;
-                                        var j2=(w*50)-50;
+                                        var i2=(q*33)-33;
+                                        var j2=(w*33)-33;
                                         DrawArc(i2,j2);  
                                     }
                                     w++;
@@ -188,25 +185,26 @@ var drawingCanvas = document.getElementById('smile');
                         {   
                             var q=i-1;
                             var w=j-1;
+                            kolship3++;
                             for(var f=0;f<5;f++)
                             {
                                 for(var g=0;g<3;g++)
                                 {
                                     if((q == i && w == j)||(q == i+1 && w == j )||(q == i+2 && w == j))
                                     {
-                                        var i2=(i*50)-50;
-                                        var j2=(j*50)-50;
+                                        var i2=(i*33)-33;
+                                        var j2=(j*33)-33;
                                         context.fillStyle = "rgb(255,0,0)"; 
-                                        context.fillRect (i2+1,j2+1, 49,49);
-                                        i2=((i+1)*50)-50;
-                                        context.fillRect (i2+1,j2+1, 49,49);
-                                        i2=((i+2)*50)-50;
-                                        context.fillRect (i2+1,j2+1, 49,49);
+                                        context.fillRect (i2+2,j2+2, 31,31);
+                                        i2=((i+1)*33)-33;
+                                        context.fillRect (i2+2,j2+2, 31,31);
+                                        i2=((i+2)*33)-33;
+                                        context.fillRect (i2+2,j2+2, 31,31);
                                     }
                                     else
                                     {
-                                        var i2=(q*50)-50;
-                                        var j2=(w*50)-50;
+                                        var i2=(q*33)-33;
+                                        var j2=(w*33)-33;
                                         DrawArc(i2,j2); 
                                     }
                                     w++;
@@ -222,25 +220,26 @@ var drawingCanvas = document.getElementById('smile');
                         {   
                             var q=i-1;
                             var w=j-1;
+                            kolship3++;
                             for(var f=0;f<3;f++)
                             {
                                 for(var g=0;g<5;g++)
                                 {
                                     if((q == i && w == j)||(q == i && w == j+1 )||(q == i && w == j+2))
                                     {
-                                        var i2=(i*50)-50;
-                                        var j2=(j*50)-50;
+                                        var i2=(i*33)-33;
+                                        var j2=(j*33)-33;
                                         context.fillStyle = "rgb(255,0,0)"; 
-                                        context.fillRect (i2+1,j2+1, 49,49);
-                                        j2=((j+1)*50)-50;
-                                        context.fillRect (i2+1,j2+1, 49,49);
-                                        j2=((j+2)*50)-50;
-                                        context.fillRect (i2+1,j2+1, 49,49);
+                                        context.fillRect (i2+2,j2+2, 31,31);
+                                        j2=((j+1)*33)-33;
+                                        context.fillRect (i2+2,j2+2, 31,31);
+                                        j2=((j+2)*33)-33;
+                                        context.fillRect (i2+2,j2+2, 31,31);
                                     }
                                     else
                                     {
-                                        var i2=(q*50)-50;
-                                        var j2=(w*50)-50;
+                                        var i2=(q*33)-33;
+                                        var j2=(w*33)-33;
                                         DrawArc(i2,j2); 
                                     }
                                     w++;
@@ -256,27 +255,28 @@ var drawingCanvas = document.getElementById('smile');
                         {   
                             var q=i-1;
                             var w=j-1;
+                            kolship4++;
                             for(var f=0;f<6;f++)
                             {
                                 for(var g=0;g<3;g++)
                                 {
                                     if((q == i && w == j)||(q == i+1 && w == j )||(q == i+2 && w == j)||(q == i+3 && w == j))
                                     {
-                                        var i2=(i*50)-50;
-                                        var j2=(j*50)-50;
+                                        var i2=(i*33)-33;
+                                        var j2=(j*33)-33;
                                         context.fillStyle = "rgb(255,0,0)"; 
-                                        context.fillRect (i2+1,j2+1, 49,49);
-                                        i2=((i+1)*50)-50;
-                                        context.fillRect (i2+1,j2+1, 49,49);
-                                        i2=((i+2)*50)-50;
-                                        context.fillRect (i2+1,j2+1, 49,49);
-                                        i2=((i+3)*50)-50;
-                                        context.fillRect (i2+1,j2+1, 49,49);
+                                        context.fillRect (i2+2,j2+2, 31,31);
+                                        i2=((i+1)*33)-33;
+                                        context.fillRect (i2+2,j2+2, 31,31);
+                                        i2=((i+2)*33)-33;
+                                        context.fillRect (i2+2,j2+2, 31,31);
+                                        i2=((i+3)*33)-33;
+                                        context.fillRect (i2+2,j2+2, 31,31);
                                     }
                                     else
                                     {
-                                        var i2=(q*50)-50;
-                                        var j2=(w*50)-50;
+                                        var i2=(q*33)-33;
+                                        var j2=(w*33)-33;
                                         DrawArc(i2,j2); 
                                     }
                                     w++;
@@ -292,28 +292,29 @@ var drawingCanvas = document.getElementById('smile');
                         {   
                             var q=i-1;
                             var w=j-1;
+                            kolship4++;
                             for(var f=0;f<3;f++)
                             {
                                 for(var g=0;g<6;g++)
                                 {
                                     if((q == i && w == j)||(q == i && w == j+1 )||(q == i && w == j+2)||(q == i && w == j+3))
                                     {
-                                        var i2=(i*50)-50;
-                                        var j2=(j*50)-50;
+                                        var i2=(i*33)-33;
+                                        var j2=(j*33)-33;
                                         context.fillStyle = "rgb(255,0,0)"; 
-                                        context.fillRect (i2+1,j2+1, 49,49);
-                                        j2=((j+1)*50)-50;
-                                        context.fillRect (i2+1,j2+1, 49,49);
-                                        j2=((j+2)*50)-50;
-                                        context.fillRect (i2+1,j2+1, 49,49);
-                                        j2=((j+3)*50)-50;
-                                        context.fillRect (i2+1,j2+1, 49,49);
+                                        context.fillRect (i2+2,j2+2, 31,31);
+                                        j2=((j+1)*33)-33;
+                                        context.fillRect (i2+2,j2+2, 31,31);
+                                        j2=((j+2)*33)-33;
+                                        context.fillRect (i2+2,j2+2, 31,31);
+                                        j2=((j+3)*33)-33;
+                                        context.fillRect (i2+2,j2+2, 31,31);
                                     
                                     }
                                     else
                                     {
-                                        var i2=(q*50)-50;
-                                        var j2=(w*50)-50;
+                                        var i2=(q*33)-33;
+                                        var j2=(w*33)-33;
                                         DrawArc(i2,j2); 
                                     }
                                     w++;
@@ -325,6 +326,18 @@ var drawingCanvas = document.getElementById('smile');
                     }
                 }
             }
+            for(var t=0;t<5;t++)
+            {
+                if(kolship4 == t)
+                document.getElementById('p_four').innerHTML ="x"+(1-t);
+                if(kolship3 == t)
+                document.getElementById('p_three').innerHTML ="x"+(2-t);
+                if(kolship2 == t)
+                document.getElementById('p_two').innerHTML ="x"+(3-t);
+                if(kolship1 == t)
+                document.getElementById('p_one').innerHTML ="x"+(4-t);
+            }         
+
         }
         smile.oncontextmenu=function Draw()
         {
@@ -336,10 +349,13 @@ var drawingCanvas = document.getElementById('smile');
     }
 }
 
+
+
+
+
+
+                                                                            // РАНДОМНАЯ РАССТАНОВКА КОРАБЛЕЙ
 function matrixArray(){
-    
-    kol2=0;
-    kol=0;
     arr = new Array();
     for(var i=1; i<13; i++){
         arr[i] = new Array();

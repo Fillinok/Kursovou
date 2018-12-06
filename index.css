@@ -1,0 +1,48 @@
+.canvas
+{
+    position: relative;
+    margin: 0 auto; 
+    
+}
+.field_play
+{
+    display: block;
+}
+.main
+{
+    width: 629px;
+    height: 431px;
+    display: flex;
+    justify-content: flex-start;
+    background: url('battlefield/grid.png') repeat;
+}
+.ship
+{
+    margin:5px 10px;
+}
+.field
+{
+    display: none;
+}
+.x_p
+{
+    display: flex;
+    justify-content: flex-start;
+}
+.p1
+{
+    font-size: 14px;
+    font-family: 'Kalam', cursive ;
+}
+.sec
+{
+    font-size: 30px;
+    margin: 0px 30px;
+    font-family: 'Kalam', cursive ;
+}
+.button
+{
+    background-image: url("IF/again.png");
+    height: 50px;
+    width: 148px;
+}
