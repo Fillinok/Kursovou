@@ -10,7 +10,7 @@
 }
 .main
 {
-    width: 629px;
+    width: 662px;
     height: 431px;
     display: flex;
     justify-content: flex-start;
@@ -42,6 +42,7 @@
 }
 .button
 {
+    margin:0px 138px;
     background-image: url("IF/again.png");
     height: 50px;
     width: 148px;
