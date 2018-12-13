@@ -1,3 +1,137 @@
+.menudiv1
+{
+    margin: 7px 10px;
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+}
+.menudiv2
+{
+    margin:0px 20px;
+    display:flex;
+    justify-content:space-around; 
+    width:40%;
+}
+p
+{
+    font-size: 30px;
+    color:black;
+}
+.img1
+{
+    display:flex;
+    width:30%;height:400px;
+    justify-content:center;
+}
+
+.screendiv
+{
+    display:flex;
+    justify-content: space-around; 
+    width:100%;  
+}
+.razdel
+{
+    color:whitesmoke;
+    text-align: center;
+}
+.action:hover
+{
+    background: red;
+}
+.p1
+{
+    font-size: 25px;
+    color:black;
+    text-decoration: none;
+    font-family: 'Kalam', cursive ;
+}
+li 
+{
+    text-decoration: none;
+    float: left;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.img2
+{
+    width:85%;
+    height:400px;
+    padding:0px 20px;
+}
+.img3
+{
+    padding:0px 30px;
+    width:60%;
+    height:400px;
+}
+.img4
+{
+    width:40%;
+    height:400px;
+}
+.me
+{
+    width:300px;
+    height:300px;
+}
+
+
+@media screen and (max-width: 600px)
+{
+.screendiv
+{
+    flex-direction: column;
+    margin: auto; 
+    width:100%;  
+}
+.img1,.img11
+{
+    padding: 0px 10px;
+    width:99%;height:400px;
+}
+.telP
+{
+    padding:0px 10px;
+}
+li .hidden
+{
+    text-align: center;
+    display: none;
+}
+li:hover .hidden
+{
+    display: block;
+    align-items: center;
+    
+}
+ul 
+{
+    list-style-type: none;
+    align-items: center;
+    display: inline-block;
+    flex-direction: column;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .canvas
 {
     position: relative;
@@ -12,38 +146,52 @@
 {
     width: 662px;
     height: 431px;
-    display: flex;
-    justify-content: flex-start;
-    background: url('battlefield/grid.png') repeat;
+    display: none;
+    position: relative;
+    left:618px;
+    
 }
 .ship
 {
-    margin:5px 10px;
+    margin:0px 10px;
 }
 .field
 {
     display: none;
 }
-.x_p
-{
-    display: flex;
-    justify-content: flex-start;
-}
 .p1
 {
-    font-size: 14px;
+    font-size: 30px;
     font-family: 'Kalam', cursive ;
+    display:inline;
+    position: relative;
+    top:-11px;
 }
 .sec
 {
     font-size: 30px;
-    margin: 0px 30px;
+    margin: 0px 18px;
     font-family: 'Kalam', cursive ;
+}
+.button,.play
+{
+    height: 50px;
+    width: 148px;
 }
 .button
 {
-    margin:0px 138px;
     background-image: url("IF/again.png");
-    height: 50px;
-    width: 148px;
+    margin:0px 138px; 
+}
+.play
+{
+    background-image: url("IF/play.png");
+}
+.win
+{
+    display: none;
+    height: 270px;
+    width: 659px;
+    background-color: lightblue;
+    box-shadow: 0 0 10px black;
 }

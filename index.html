@@ -1,51 +1,105 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>JavaScript</title>
-        <meta charset="utf-8">
-        <link href='index.css' rel='stylesheet' type='text/css'>
-    </head>
-<body>
-<script type="text/JavaScript" src="index.js"></script>
-
-<div class="main">
-
-    <div class="field_play">
-        <canvas  class ="canvas" id="smile" width="370" height="370"></canvas><br>
-        <input type=button class="button" onclick="window.location.reload()">
-    </div>
-
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<title>Морской бой</title>
+<link href='index.css' rel='stylesheet' type='text/css'>
+</head>
+<body style="background: url('battlefield/grid.png') repeat" >
+    <script type="text/JavaScript" src="index.js"></script>
+    <ul class="menudiv1">
+        <li>
+            <input id="play" type=button class="play" onclick="smena();StartStop()">
+        </li>
+        <li class="menudiv2">
+            <nav>
+                <a class="p1 action hi22">Меню</a>
+                <a href="#screen" class="hidden p1 action ">Игровые экраны</a>
+                <a href="#rule" class="hidden p1 action ">Правила</a>
+                <a href="#me" class="hidden p1 action ">Об авторе</a>
+        </li>
+    </ul>
     <div>
-        <div class="x_p sec">
-            <p id="stopwatch"> 00:00:00.00 </p>
+        <img id="img11" class="img11" src="image/1.jpg" style="width:99%;height:400px;" >
+    </div>
+    <div id="main" class="main">
+
+        <div class="field_play">
+            <canvas  class ="canvas" id="smile" width="370" height="370"></canvas><br>
+            <input id="again" type=button class="button" onclick="window.location.reload()">
         </div>
-        <div class="x_p">
-            <img class="ship" id="four" src="IF/four1.png">
-            <p class="p1" id="p_four"> x1</p>
-        </div><br>
-        <div class="x_p">
-            <img class="ship" id="three" src="IF/three1.png">
-            <p class="p1" id="p_three"> x2</p>
-        </div><br>
-        <div class="x_p">
-            <img class="ship" id="two" src="IF/two1.png">
-            <p class="p1" id="p_two"> x3</p> 
-        </div><br>
-        <div class="x_p">
-            <img class="ship" id="one" src="IF/one1.png">
-            <p class="p1" id="p_one"> x4</p>
+    
+        <div id="x_p">
+            <div class="sec">
+                <p id="stopwatch"> 00:00:00.00 </p>
+            </div>
+            <div>
+                <img class="ship" id="four" src="IF/four1.png">
+                <p class="p1" id="p_four"> x1</p>
+            </div><br>
+            <div>
+                <img class="ship" id="three" src="IF/three1.png">
+                <p class="p1" id="p_three"> x2</p>
+            </div><br>
+            <div>
+                <img class="ship" id="two" src="IF/two1.png">
+                <p class="p1" id="p_two"> x3</p> 
+            </div><br>
+            <div>
+                <img class="ship" id="one" src="IF/one1.png">
+                <p class="p1" id="p_one"> x4</p>
+            </div>
+        </div>
+    
+    </div>
+    <div id="win1" class="win">
+        <img id="win2" src="IF/win.png">
+        <p class="sec" id="stopwatch2"></p>
+    </div>
+    <a name="screen"></a>
+    <p class="p1 razdel ">Игровые экраны</p>
+    <div class="screendiv">
+        <img class='img1' src="image/2.jpg">
+        <img class='img1' src="image/3.png">
+        <img class='img1' src="image/4.jpg">
+    </div> 
+    <a name="rule"></a>
+    <p class="p1 razdel">Правила</p>
+    <div class="screendiv">
+        <div>
+            <p class="telP">Игровое поле — обычно квадрат 10×10 у каждого игрока, на котором размещается флот кораблей. Горизонтали обычно нумеруются сверху вниз, а вертикали помечаются буквами слева направо.</p>
+            <img class='img1 img2' src="image/5.png">
+        </div>
+        <div>
+            <p class="telP">При размещении корабли не могут касаться друг друга сторонами и углами</p>
+            <div >
+                    <img class='img1 img3' src="image/6.png">
+            </div>
         </div>
     </div>
-
-</div>
-
-
-<img class="field" id="play" src="IF/play.png">
-<img class="field" id="photo" src="battlefield/bg_play_field.png">
-<img class="field" id="hit" src="battlefield/hit.png">
-<img class="field" id="dot" src="battlefield/dot.png">
-
-
-
+    <div >
+        <p class="telP"
+        >При попадании в корабль противника — на чужом поле ставится крестик, при холостом выстреле — точка. Попавший стреляет ещё раз.</p>
+        <div style="display:flex ;justify-content: center;">
+        <img class='img1 img4' src="image/7.png"  >
+        </div>   
+    </div>
+    <a name="me"></a>
+    <p class="p1 razdel">Об авторе</p>
+    <div class="screendiv">
+        <img class='img1 me' src="image/8.jpg"   >
+        <div>
+            <p>And HIS NAME IS <br><b>EVGENIY LYZKO</b></p>
+            <p class="p1">Immortal</p>
+            <p class="p1">7800k MMR</p>
+            <p>BRGTU MS-1 best student</p>
+        </div>
+    </div>
+    <p>Курсовой проект. Предмет "ЛКС". Мои контакты <a href="https://github.com/Fillinok" style="text-decoration: none;">git.hub</a> и <a href="mailto:Jly3eka@gmail.com" style="text-decoration: none;">gmail.com</a>.</p>
+    <img class="field" id="play" src="IF/play.png">
+    <img class="field" id="photo" src="battlefield/bg_play_field.png">
+    <img class="field" id="hit" src="battlefield/hit.png">
+    <img class="field" id="dot" src="battlefield/dot.png">
 </body>
 </html>

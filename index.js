@@ -9,12 +9,7 @@ var drawingCanvas = document.getElementById('smile');
     context.drawImage(img,6,7);
     kol=0;
     kol2=0;
-    StartStop();
     matrixArray();
-    //again.onclick= function play()
-    //{
-    //    window.location.reload();
-    //}
     function DrawArc(x2,y2)
     {
         if(x2>10 && x2<360 && y2>10 && y2<360)
@@ -22,10 +17,10 @@ var drawingCanvas = document.getElementById('smile');
     } 
         smile.onmousemove= function getCoord()
         {
-            x2=event.clientX;
-            y2=event.clientY;
-            x2=x2-8;
-            y2=y2-8; 
+            x2=event.pageX;
+            y2=event.pageY;
+            x2=x2-627;
+            y2=y2-66; 
             if(x2%33 !=0)
             {
                 x2=Math.ceil(x2/33);
@@ -45,36 +40,27 @@ var drawingCanvas = document.getElementById('smile');
             kolship3=0;
             kolship4=0;
             kol2++;
-            if(kol == 20)
+            
+            
+            var x3=(x2+33)/33;
+            var y3=(y2+33)/33;
+            if(arr[x3][y3]==1)
             {
-                StartStop();
-                //var str1="Количество ходов: ";
-                //var str2="Время: ";
-                alert("Количество ходов: "+kol2+" Время: "+readout);kol++;
-                
-            }
-        else(x2 < 500 || y2 < 500)
-            {
-                var x3=(x2+33)/33;
-                var y3=(y2+33)/33;
-                if(arr[x3][y3]==1)
-                {
-                    arr[x3][y3]=2;
-                    kol++;
-                    if(arr[x3-1][y3-1]==0 && arr[x3][y3-1]== 0 && arr[x3+1][y3-1]== 0 && arr[x3-1][y3]== 0 && arr[x3+1][y3] == 0 && arr[x3-1][y3+1] == 0 && arr[x3][y3+1] == 0 && arr[x3+1][y3+1] == 0)
-                    {
-                        
-                    }
-                    else
-                    {
-                        context.drawImage(img2,x2+3,y2+2);
-                    }
+                arr[x3][y3]=2;
+                kol++;
+                if(arr[x3-1][y3-1]==0 && arr[x3][y3-1]== 0 && arr[x3+1][y3-1]== 0 && arr[x3-1][y3]== 0 && arr[x3+1][y3] == 0 && arr[x3-1][y3+1] == 0 && arr[x3][y3+1] == 0 && arr[x3+1][y3+1] == 0)
+                {   
                 }
-                if(arr[x3][y3] == 0) 
+                else
                 {
-                    DrawArc(x2,y2);
-                }   
+                    context.drawImage(img2,x2+3,y2+2);
+                }
             }
+            if(arr[x3][y3] == 0) 
+            {
+                DrawArc(x2,y2);
+            }   
+            
             for(var i=1;i<11;i++)
             {
                 for(var j=1;j<11;j++)
@@ -339,6 +325,20 @@ var drawingCanvas = document.getElementById('smile');
                 document.getElementById('p_two').innerHTML ="x"+(3-t);
                 if(kolship1 == t)
                 document.getElementById('p_one').innerHTML ="x"+(4-t);
+            }
+            if(kol == 20)
+            {
+                kol--;
+                StartStop();
+                    win1=document.getElementById('win1');
+                    win3=document.getElementById('x_p');
+                    again=document.getElementById('again');
+                    win1.style.display= "block";
+                    win1.style.position="absolute";
+                    win1.style.margin="-380px 618px";
+                    again.style.position="relative";
+                    again.style.left="135px";
+                    document.getElementById('stopwatch2').innerHTML=" Количество ходов: "+kol2+ '\n'+ " Время: "+readout; 
             }         
 
         }
@@ -495,7 +495,12 @@ var clocktimer,dateObj,dh,dm,ds,ms;
 var readout=''; 
 var h=1,m=1,tm=1,s=0,ts=0,ms=0,init=0; 
                     
-//функция для очистки поля
+
+
+                                                                            // ТАЙМЕР
+
+
+
 function ClearСlock() { 
 clearTimeout(clocktimer); 
 h=1;m=1;tm=1;s=0;ts=0;ms=0; 
@@ -582,4 +587,11 @@ function StartStop()
 		clearTimeout(clocktimer);
 		init=0;
 	} 
+}
+function smena()
+{
+    var img11=document.getElementById('img11');
+    img11.style.display="none";
+    var main=document.getElementById('main');
+    main.style.display="flex";
 } 
