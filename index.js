@@ -9,6 +9,7 @@ var drawingCanvas = document.getElementById('smile');
     context.drawImage(img,6,7);
     kol=0;
     kol2=0;
+    kol99=0;
     matrixArray();
     function DrawArc(x2,y2)
     {
@@ -328,17 +329,18 @@ var drawingCanvas = document.getElementById('smile');
             }
             if(kol == 20)
             {
+                kol99=1;
                 kol--;
                 StartStop();
-                    win1=document.getElementById('win1');
-                    win3=document.getElementById('x_p');
-                    again=document.getElementById('again');
-                    win1.style.display= "block";
-                    win1.style.position="absolute";
-                    win1.style.margin="-380px 618px";
-                    again.style.position="relative";
-                    again.style.left="135px";
-                    document.getElementById('stopwatch2').innerHTML=" Количество ходов: "+kol2+ '\n'+ " Время: "+readout; 
+                win1=document.getElementById('win1');
+                win3=document.getElementById('x_p');
+                again=document.getElementById('again');
+                win1.style.display= "block";
+                win1.style.position="absolute";
+                win1.style.margin="-380px 618px";
+                again.style.position="relative";
+                    //again.style.left="135px";
+                document.getElementById('stopwatch2').innerHTML=" Количество ходов: "+kol2+ '\n'+ " Время: "+readout; 
             }         
 
         }
@@ -595,3 +597,25 @@ function smena()
     var main=document.getElementById('main');
     main.style.display="flex";
 } 
+function reLoad()
+{
+    if(kol99!=1)
+    StartStop();
+    else
+    kol99=0;
+    StartStop();
+    document.getElementById('p_four').innerHTML ="x1";
+    document.getElementById('p_three').innerHTML ="x2";
+    document.getElementById('p_two').innerHTML ="x3";
+    document.getElementById('p_one').innerHTML ="x4";
+    kol=0;
+    kol2=0;
+    matrixArray();
+    var drawingCanvas = document.getElementById('smile');
+    var context = drawingCanvas.getContext('2d');
+    context.clearRect(0,0,370,370);
+    var img = document.getElementById("photo");
+    context.drawImage(img,6,7);
+    win1=document.getElementById('win1');
+    win1.style.display= "none";
+}

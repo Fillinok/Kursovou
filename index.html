@@ -8,16 +8,18 @@
 </head>
 <body style="background: url('battlefield/grid.png') repeat" >
     <script type="text/JavaScript" src="index.js"></script>
+    <a name="return"></a>
     <ul class="menudiv1">
         <li>
-            <input id="play" type=button class="play" onclick="smena();StartStop()">
+            <input type=button class="play" onclick="smena();StartStop()">
         </li>
         <li class="menudiv2">
             <nav>
-                <a class="p1 action hi22">Меню</a>
-                <a href="#screen" class="hidden p1 action ">Игровые экраны</a>
-                <a href="#rule" class="hidden p1 action ">Правила</a>
-                <a href="#me" class="hidden p1 action ">Об авторе</a>
+                <a href="#return" class="return_b"></a>
+                <a class="action hi22"><button type="button"class="menu_button"></button></a>
+                <a href="#screen" class="hidden action"><button type="button"class="screen_button"></button></a>
+                <a href="#rule" class="hidden action "><button type="button"class="rules_button"></button></a>
+                <a href="#me" class="hidden  action "><button type="button"class="author_button"></button></a>
         </li>
     </ul>
     <div>
@@ -27,7 +29,7 @@
 
         <div class="field_play">
             <canvas  class ="canvas" id="smile" width="370" height="370"></canvas><br>
-            <input id="again" type=button class="button" onclick="window.location.reload()">
+            <input id="again" type=button class="button" onclick="reLoad()">
         </div>
     
         <div id="x_p">
